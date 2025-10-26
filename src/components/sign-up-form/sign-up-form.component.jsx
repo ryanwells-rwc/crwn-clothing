@@ -5,7 +5,7 @@ import {
 	createAuthUserWithEmailAndPassword,
 	createUserDocumentFromAuth,
 } from "../../utils/firebase/firebase.utils";
-import './sign-up-form.styles.scss';
+import "./sign-up-form.styles.scss";
 
 const defaultFormFields = {
 	displayName: "",
@@ -14,15 +14,16 @@ const defaultFormFields = {
 	confirmPassword: "",
 };
 
+// function gets rerun but no components rerender - this is because we get a value from useContext, but that value isn't used in the components (virtual DOM)
 const SignUpForm = () => {
 	const [formFields, setFormFields] = useState(defaultFormFields);
 	const { displayName, email, password, confirmPassword } = formFields;
 
-	console.log(formFields);
+	//const val = useContext(UserContext);
 
 	const resetFormFields = () => {
 		setFormFields(defaultFormFields);
-	}
+	};
 
 	const handleSubmit = async (event) => {
 		event.preventDefault();
@@ -37,7 +38,7 @@ const SignUpForm = () => {
 				email,
 				password
 			);
-			
+
 			await createUserDocumentFromAuth(user, { displayName });
 
 			resetFormFields();
@@ -47,7 +48,6 @@ const SignUpForm = () => {
 			} else {
 				console.log("user creation encountered an error", error);
 			}
-			
 		}
 	};
 
