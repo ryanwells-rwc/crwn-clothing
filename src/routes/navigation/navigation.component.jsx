@@ -1,23 +1,23 @@
-import { useContext } from "react";
-import { Outlet, Link } from "react-router";
+import { Outlet } from "react-router";
+import { useSelector} from "react-redux";
 import CrwnLogo from "../../assets/crown.svg?react";
 import CartIcon from "../../components/cart-icon/cart-icon.component";
 import CartDropdown from "../../components/cart-dropdown/cart-dropdown.component";
-import { UserContext } from "../../contexts/user.context";
 import { signOutUser } from "../../utils/firebase/firebase.utils";
-import { CartContext } from "../../contexts/cart.context";
 import {
 	NavigationContainer,
 	NavLinks,
 	NavLink,
 	LogoContainer,
 } from "./navigation.styles";
+import { selectCurrentUser } from "../../store/user/user.selector.js";
+import { selectIsCartOpen } from "../../store/cart/cart.selector.js";
 
 const Navigation = () => {
 	// here we want the value, not the setter
 	// whenever a value in this context updates, rerender
-	const { currentUser } = useContext(UserContext);
-	const { isCartOpen } = useContext(CartContext);
+  const currentUser = useSelector(selectCurrentUser);
+  const isCartOpen = useSelector(selectIsCartOpen);
 
 	//console.log(currentUser);
 	return (

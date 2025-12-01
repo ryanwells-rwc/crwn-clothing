@@ -10,11 +10,18 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.4",
     "firebase": "^12.4.0",
+    "prettier": "^3.6.2",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
+    "react-redux": "^9.2.0",
     "react-router": "^7.9.4",
     "react-router-dom": "^7.9.4",
+    "redux": "^5.0.1",
+    "redux-logger": "^3.0.6",
+    "reselect": "^5.1.1",
     "sass": "^1.93.2",
     "styled-components": "^6.1.19",
     "vite-plugin-svgr": "^4.5.0"
