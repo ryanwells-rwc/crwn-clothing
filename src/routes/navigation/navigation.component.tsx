@@ -9,9 +9,9 @@ import {
   NavLink,
   NavLinks,
 } from "./navigation.styles";
-import { selectCurrentUser } from "../../store/user/user.selector.js";
-import { selectIsCartOpen } from "../../store/cart/cart.selector.js";
-import { signOutStart } from "../../store/user/user.action.js";
+import { selectCurrentUser } from "../../store/user/user.selector";
+import { selectIsCartOpen } from "../../store/cart/cart.selector";
+import { signOutStart } from "../../store/user/user.action";
 
 const Navigation = () => {
   const dispatch = useDispatch();

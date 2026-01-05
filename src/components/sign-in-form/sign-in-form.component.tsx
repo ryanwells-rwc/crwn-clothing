@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { ChangeEvent, FormEvent, useState } from "react";
 import FormInput from "../form-input/form-input.component";
 import Button, { BUTTON_TYPE_CLASSES } from "../button/button.component";
 import { ButtonsContainer, SignInContainer } from "./sign-in-form.styles";
@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 import {
   emailSignInStart,
   googleSignInStart,
-} from "../../store/user/user.action.js";
+} from "../../store/user/user.action";
 
 const defaultFormFields = {
   email: "",
@@ -26,7 +26,7 @@ const SignInForm = () => {
     dispatch(googleSignInStart());
   };
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     try {
@@ -34,13 +34,13 @@ const SignInForm = () => {
       // set the user in context when we get it back from sign in
       resetFormFields();
     } catch (error) {
-      if (error.code === "auth/invalid-credential") {
-        alert("incorrect credentials");
+      if (error) {
+        alert("user sign in failed");
       }
     }
   };
 
-  const handleChange = (event) => {
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
     setFormFields({ ...formFields, [name]: value });
   };
