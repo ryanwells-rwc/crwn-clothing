@@ -1,8 +1,9 @@
-import { Outlet } from "react-router";
+import { Outlet, Route, Routes } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import CrwnLogo from "../../assets/crown.svg?react";
 import CartIcon from "../../components/cart-icon/cart-icon.component";
 import CartDropdown from "../../components/cart-dropdown/cart-dropdown.component";
+import SearchBox from "../../components/search-box/search-box.component";
 import {
   LogoContainer,
   NavigationContainer,
@@ -29,6 +30,9 @@ const Navigation = () => {
         <LogoContainer to="/">
           <CrwnLogo className="logo" />
         </LogoContainer>
+        <Routes>
+          <Route path="*" element={<SearchBox />} />
+        </Routes>
         <NavLinks>
           <NavLink to="/shop">SHOP</NavLink>
           {currentUser ? (

@@ -25,14 +25,14 @@ const Category = () => {
 
   return (
     <Fragment>
-      <Title>{category.toUpperCase()}</Title>
+      <Title>{category && category.toUpperCase()}</Title>
       {isLoading ? (
         <Spinner />
       ) : (
         <CategoryContainer>
           {products &&
             products.map((product) => (
-              <ProductCard key={product.id} product={product} />
+              <ProductCard key={product.id} product={product} category={category} />
             ))}
         </CategoryContainer>
       )}
